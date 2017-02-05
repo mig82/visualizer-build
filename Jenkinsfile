@@ -16,6 +16,8 @@ Boolean buildAndroidPhoneNative,
 		buildWindowsNative
 
 node{
+
+	def jenkinsWorkspace
 	
 	stage('Validate inputs'){
 		visualizerAppName = VISUALIZER_APP_NAME
@@ -35,9 +37,9 @@ node{
 	}
 	
 	stage('Load Groovy modules'){
-		def workspace = pwd() 
+		jenkinsWorkspace = pwd() 
 		//KonyPluginsManager = load("${workspace}@script/KonyPluginsManager.groovy")
-		echo "Done loading Groovy modules"
+		echo "Done loading Groovy modules from ${jenkinsWorkspace}"
 	}
 	
 	stage('Build'){
@@ -58,14 +60,6 @@ node{
 							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${mobileFabricCredentialsId}"]
 						]
 					)
-					/*node('android'){
-						if(isUnix()){
-							sh("hostname")	
-						}
-						else{
-							bat("hostname")
-						}
-					}*/
 				}
 				
 			},
