@@ -1,14 +1,32 @@
 def KonyPluginsXmlParser
 
-def buildAndroidPhoneNative,
-	buildAndroidTabletNative,
-	buildIPhoneNative,
-	buildIPadNative,
-	buildWindowsNative
+String 	visualizerAppName,
+    	mobileFabricAppName
+
+String 	gitVisualizerAppRepo,
+    	gitVisualizerAppBranch
+
+String 	gitCredentialsId,
+		mobileFabricCredentialsId
+
+Boolean buildAndroidPhoneNative,
+		buildAndroidTabletNative,
+		buildIPhoneNative,
+		buildIPadNative,
+		buildWindowsNative
 
 node{
 	
 	stage('Validate inputs'){
+	    visualizerAppName = VISUALIZER_APP_NAME
+	    mobileFabricAppName = MOBILE_FABRIC_APP_NAME
+
+	    gitVisualizerAppRepo = GIT_VISUALIZER_APP_REPO
+	    gitVisualizerAppBranch = GIT_VISUALIZER_APP_BRANCH
+
+	    gitCredentialsId = GIT_CREDENTIALS
+	    mobileFabricCredentialsId = MOBILE_FABRIC_CREDENTIALS
+
 		buildAndroidPhoneNative = BUILD_ANDROID_PHONE_NATIVE
 		buildAndroidTabletNative = BUILD_ANDROID_TABLET_NATIVE
 		buildIPhoneNative = BUILD_IPHONE_NATIVE
@@ -32,12 +50,12 @@ node{
 						propagate: false,
 						wait: true,
 						parameters: [
-							[$class: "StringParameterValue", 	name: "VISUALIZER_APP_NAME", 		value: "${VISUALIZER_APP_NAME}"],
-							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_REPO", 	value: "${GIT_VISUALIZER_APP_REPO}"],
-							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_BRANCH", 	value: "${GIT_VISUALIZER_APP_BRANCH}"],
-							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 			value: "${GIT_CREDENTIALS}"],
-							[$class: "StringParameterValue", 	name: "MOBILE_FABRIC_APP_NAME", 	value: "${MOBILE_FABRIC_APP_NAME}"],
-							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${GIT_CREDENTIALS}"]
+							[$class: "StringParameterValue", 	name: "VISUALIZER_APP_NAME", 		value: "${visualizerAppName}"],
+							[$class: "StringParameterValue", 	name: "MOBILE_FABRIC_APP_NAME", 	value: "${mobileFabricAppName}"],
+							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_REPO", 	value: "${gitVisualizerAppRepo}"],
+							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_BRANCH", 	value: "${gitVisualizerAppBranch}"],
+							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 			value: "${gitCredentialsId}"],
+							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${mobileFabricCredentialsId}"]
 						]
 					)
 					/*node('android'){
