@@ -32,6 +32,7 @@ node{
 						propagate: false,
 						wait: true,
 						parameters: [
+							[$class: "StringParameterValue", 	name: "VISUALIZER_APP_NAME", 		value: "${VISUALIZER_APP_NAME}"],
 							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_REPO", 	value: "${GIT_VISUALIZER_APP_REPO}"],
 							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_BRANCH", 	value: "${GIT_VISUALIZER_APP_BRANCH}"],
 							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 			value: "${GIT_CREDENTIALS}"],
