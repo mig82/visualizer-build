@@ -26,22 +26,22 @@ node{
 		parallel(
 			'android-phone-native': {
 				if(buildAndroidPhoneNative=='true'){
-					echo('Building Android phone native')
-					//build(job: 'android-phone-build', propagate: false, wait: false)
-					node('android'){
+					echo('Requested target build: Android phone native')
+					build(job: 'android-phone-build', propagate: false, wait: true)
+					/*node('android'){
 						if(isUnix()){
 							sh("hostname")	
 						}
 						else{
 							bat("hostname")
 						}
-					}
+					}*/
 				}
 				
 			},
 			'android-tablet-native': {
 				if(buildAndroidTabletNative=='true'){
-					echo('Building Android tablet native')
+					echo('Requested target build: Android tablet native')
 					node('android'){
 						if(isUnix()){
 							sh("hostname")	
@@ -54,7 +54,7 @@ node{
 			},
 			'iphone-native': {
 				if(buildIPhoneNative=='true'){
-					echo('Building iPhone native')
+					echo('Requested target build: iPhone native')
 					//build(job: 'iphone-build', propagate: false, wait: false)
 					node('ios'){
 						sh("hostname")
@@ -63,7 +63,7 @@ node{
 			},
 			'ipad-native': {
 				if(buildIPadNative=='true'){
-					echo('Building iPad native')
+					echo('Requested target build: iPad native')
 					node('ios'){
 						sh("hostname")
 					}
@@ -71,7 +71,7 @@ node{
 			},
 			'windows-native': {
 				if(buildWindowsNative=='true'){
-					echo('Building Windows')
+					echo('Requested target build: Windows')
 					node('windows'){
 						bat("hostname")
 					}
