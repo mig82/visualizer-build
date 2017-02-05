@@ -55,10 +55,10 @@ node{
 			'iphone-native': {
 				if(buildIPhoneNative=='true'){
 					echo('Requested target build: iPhone native')
-					//build(job: 'iphone-build', propagate: false, wait: false)
-					node('ios'){
+					build(job: 'iphone-build', propagate: false, wait: true)
+					/*node('ios'){
 						sh("hostname")
-					}
+					}*/
 				}
 			},
 			'ipad-native': {
