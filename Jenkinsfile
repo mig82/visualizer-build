@@ -42,7 +42,7 @@ node{
 		echo "Done loading Groovy modules from ${jenkinsWorkspace}"
 	}
 	
-	stage('Build'){
+	stage('Build Visualizer app'){
 		parallel(
 			'android-phone-native': {
 				if(buildAndroidPhoneNative=='true'){
