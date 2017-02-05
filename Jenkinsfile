@@ -1,10 +1,10 @@
-def KonyPluginsXmlParser
+def KonyPluginsManager
 
 String 	visualizerAppName,
-    	mobileFabricAppName
+		mobileFabricAppName
 
 String 	gitVisualizerAppRepo,
-    	gitVisualizerAppBranch
+		gitVisualizerAppBranch
 
 String 	gitCredentialsId,
 		mobileFabricCredentialsId
@@ -18,14 +18,14 @@ Boolean buildAndroidPhoneNative,
 node{
 	
 	stage('Validate inputs'){
-	    visualizerAppName = VISUALIZER_APP_NAME
-	    mobileFabricAppName = MOBILE_FABRIC_APP_NAME
+		visualizerAppName = VISUALIZER_APP_NAME
+		mobileFabricAppName = MOBILE_FABRIC_APP_NAME
 
-	    gitVisualizerAppRepo = GIT_VISUALIZER_APP_REPO
-	    gitVisualizerAppBranch = GIT_VISUALIZER_APP_BRANCH
+		gitVisualizerAppRepo = GIT_VISUALIZER_APP_REPO
+		gitVisualizerAppBranch = GIT_VISUALIZER_APP_BRANCH
 
-	    gitCredentialsId = GIT_CREDENTIALS
-	    mobileFabricCredentialsId = MOBILE_FABRIC_CREDENTIALS
+		gitCredentialsId = GIT_CREDENTIALS
+		mobileFabricCredentialsId = MOBILE_FABRIC_CREDENTIALS
 
 		buildAndroidPhoneNative = BUILD_ANDROID_PHONE_NATIVE
 		buildAndroidTabletNative = BUILD_ANDROID_TABLET_NATIVE
@@ -36,7 +36,7 @@ node{
 	
 	stage('Load Groovy modules'){
 		def workspace = pwd() 
-		//KonyPluginsXmlParser = load("${workspace}@script/KonyPluginsXmlParser.groovy")
+		//KonyPluginsManager = load("${workspace}@script/KonyPluginsManager.groovy")
 		echo "Done loading Groovy modules"
 	}
 	
