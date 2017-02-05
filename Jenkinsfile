@@ -27,7 +27,18 @@ node{
 			'android-phone-native': {
 				if(buildAndroidPhoneNative=='true'){
 					echo('Requested target build: Android phone native')
-					build(job: 'android-phone-build', propagate: false, wait: true)
+					build(
+						job: 'android-phone-native-build',
+						propagate: false,
+						wait: true,
+						parameters: [
+							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_REPO", 	value: "${GIT_VISUALIZER_APP_REPO}"],
+							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_BRANCH", 	value: "${GIT_VISUALIZER_APP_BRANCH}"],
+							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 			value: "${GIT_CREDENTIALS}"],
+							[$class: "StringParameterValue", 	name: "MOBILE_FABRIC_APP_NAME", 	value: "${MOBILE_FABRIC_APP_NAME}"],
+							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${GIT_CREDENTIALS}"]
+						]
+					)
 					/*node('android'){
 						if(isUnix()){
 							sh("hostname")	
@@ -55,7 +66,7 @@ node{
 			'iphone-native': {
 				if(buildIPhoneNative=='true'){
 					echo('Requested target build: iPhone native')
-					build(job: 'iphone-build', propagate: false, wait: true)
+					build(job: 'iphone-native-build', propagate: false, wait: true)
 					/*node('ios'){
 						sh("hostname")
 					}*/
