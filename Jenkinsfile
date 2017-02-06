@@ -17,6 +17,10 @@ Boolean buildAndroidPhoneNative,
 		buildIPadNative,
 		buildWindowsNative
 
+String 	androidKeystoreFile,
+		androidKeystoreCredentialsId,
+		androidKeyCredentialsId
+
 node{
 
 	def jenkinsWorkspace
@@ -36,6 +40,10 @@ node{
 		buildIPhoneNative = BUILD_IPHONE_NATIVE
 		buildIPadNative = BUILD_IPAD_NATIVE
 		buildWindowsNative = BUILD_WINDOWS_NATIVE
+
+		androidKeystoreFile = ANDROID_KEYSTORE_FILE
+		androidKeystoreCredentialsId = ANDROID_KEYSTORE_CREDENTIALS
+		androidKeyCredentialsId = ANDROID_KEY_CREDENTIALS
 	}
 	
 	stage('Load Groovy modules'){
@@ -58,8 +66,12 @@ node{
 							[$class: "StringParameterValue", 	name: "MOBILE_FABRIC_APP_NAME", 	value: "${mobileFabricAppName}"],
 							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_REPO", 	value: "${gitVisualizerAppRepo}"],
 							[$class: "StringParameterValue", 	name: "GIT_VISUALIZER_APP_BRANCH", 	value: "${gitVisualizerAppBranch}"],
-							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 			value: "${gitCredentialsId}"],
-							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${mobileFabricCredentialsId}"]
+							[$class: "PasswordParameterValue", 	name: "GIT_CREDENTIALS", 		value: "${gitCredentialsId}"],
+							[$class: "PasswordParameterValue", 	name: "MOBILE_FABRIC_CREDENTIALS", 	value: "${mobileFabricCredentialsId}"],
+							[$class: "BooleanParameterValue", 	name: "BUILD_ANDROID_PHONE_NATIVE", 	value: true],
+							[$class: "FileParameterValue", 		name: "ANDROID_KEYSTORE_FILE", 		value: "${androidKeystoreFile}"],
+							[$class: "PasswordParameterValue", 	name: "ANDROID_KEYSTORE_CREDENTIALS", 	value: "${androidKeystoreCredentialsId}"],
+							[$class: "PasswordParameterValue", 	name: "ANDROID_KEY_CREDENTIALS", 	value: "${androidKeyCredentialsId}"]
 						]
 					)
 				}
