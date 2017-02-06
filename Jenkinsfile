@@ -1,10 +1,12 @@
 def KonyPluginsManager
 
-String 	visualizerAppName,
-		mobileFabricAppName
+//The names of the Kony applications -both the Visualizer and the Mobile Fabric apps.
+String 	visualizerAppName, //As it appears in Visualizer -a.k.a. the appid.
+	mobileFabricAppName //As it appears in the Mobile Fabric Console.
 
-String 	gitVisualizerAppRepo,
-		gitVisualizerAppBranch
+// The git repository that stores the source files for the Visualizer app.
+String 	gitVisualizerAppRepo, //The git URL to the repository.
+	gitVisualizerAppBranch //The branch, tag or selector that defines which version of the repo to build from.
 
 String 	gitCredentialsId,
 		mobileFabricCredentialsId
